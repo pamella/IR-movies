@@ -1,0 +1,22 @@
+[
+    ["https://www.justwatch.com/us/movie/a-simple-favor", true],
+    ["https://www.justwatch.com/us/movie/it-2017", true],
+    ["https://www.justwatch.com/us/movie/booksmart", true],
+    ["https://www.justwatch.com/us/movie/men-in-black-international", true],
+    ["https://www.justwatch.com/us/movie/long-shot-2019", true],
+    ["https://www.justwatch.com/us/movie/captain-marvel", true],
+    ["https://www.justwatch.com/us/movie/lord-of-the-rings-ii-the-two-towers", true],
+    ["https://www.justwatch.com/us/movie/bohemian-rhapsody", true],
+    ["https://www.justwatch.com/us/movie/captain-fantastic", true],
+    ["https://www.justwatch.com/us/movie/gone-girl", true],
+    ["https://www.justwatch.com/us/new", false],
+    ["https://www.justwatch.com/us/watchlist", false],
+    ["https://www.justwatch.com/us/about", false],
+    ["https://www.justwatch.com/us/press", false],
+    ["https://www.justwatch.com/us/faq", false],
+    ["https://www.justwatch.com/us/imprint", false],
+    ["https://www.justwatch.com/us/privacy-policy", false],
+    ["https://www.justwatch.com/us/apps", false],
+    ["https://www.justwatch.com/us/provider/hulu", false],
+    ["https://www.justwatch.com/us/provider/amazon-prime-video/new", false]
+]

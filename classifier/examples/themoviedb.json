@@ -1,0 +1,22 @@
+[
+    ["https://www.themoviedb.org/movie/243684-men-women-children", true],
+    ["https://www.themoviedb.org/movie/304410-la-famille-b-lier", true],
+    ["https://www.themoviedb.org/movie/284293-still-alice", true],
+    ["https://www.themoviedb.org/movie/306745-freeheld", true],
+    ["https://www.themoviedb.org/movie/85350-boyhood", true],
+    ["https://www.themoviedb.org/movie/198277-begin-again", true],
+    ["https://www.themoviedb.org/movie/212716-what-if", true],
+    ["https://www.themoviedb.org/movie/80278-lo-imposible", true],
+    ["https://www.themoviedb.org/movie/70706-very-good-girls", true],
+    ["https://www.themoviedb.org/movie/28665-fame", true],
+    ["https://www.themoviedb.org/discuss", false],
+    ["https://www.themoviedb.org/discover/movie", false],
+    ["https://www.themoviedb.org/account/signup", false],
+    ["https://www.themoviedb.org/documentation/api", false],
+    ["https://www.themoviedb.org/contribute", false],
+    ["https://www.themoviedb.org/apps", false],
+    ["https://www.themoviedb.org/person", false],
+    ["https://www.themoviedb.org/tv", false],
+    ["https://www.themoviedb.org/about/staying-in-touch", false],
+    ["https://www.themoviedb.org/about", false]
+]

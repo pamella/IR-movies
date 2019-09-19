@@ -1,0 +1,22 @@
+[
+    ["https://trakt.tv/movies/arrival-2016", true],
+    ["https://trakt.tv/movies/avatar-2009", true],
+    ["https://trakt.tv/movies/pretty-woman-1990", true],
+    ["https://trakt.tv/movies/10-things-i-hate-about-you-1999", true],
+    ["https://trakt.tv/movies/becoming-jane-2007", true],
+    ["https://trakt.tv/movies/pride-prejudice-2005", true],
+    ["https://trakt.tv/movies/the-way-way-back-2013", true],
+    ["https://trakt.tv/movies/the-way-he-looks-2014", true],
+    ["https://trakt.tv/movies/short-term-12-2013", true],
+    ["https://trakt.tv/movies/wonder-2017", true],
+    ["https://trakt.tv/about", false],
+    ["https://trakt.tv/forums/", false],
+    ["https://trakt.tv/branding", false],
+    ["https://trakt.tv/auth/join", false],
+    ["https://trakt.tv/vip", false],
+    ["https://trakt.tv/apps", false],
+    ["https://trakt.tv/discover", false],
+    ["https://trakt.tv/calendars/shows", false],
+    ["https://trakt.tv/movies/trending", false],
+    ["https://trakt.tv/shows/trending", false]
+]

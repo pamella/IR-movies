@@ -1,0 +1,22 @@
+[
+    ["https://find-a-movie.com/movie/3170832/Room", true],
+    ["https://find-a-movie.com/movie/2980516/The-Theory-of-Everything", true],
+    ["https://find-a-movie.com/movie/1937264/Now-Is-Good", true],
+    ["https://find-a-movie.com/movie/0317248/City-of-God", true],
+    ["https://find-a-movie.com/movie/0976051/The-Reader", true],
+    ["https://find-a-movie.com/movie/0099653/Ghost", true],
+    ["https://find-a-movie.com/movie/0126029/Shrek", true],
+    ["https://find-a-movie.com/movie/1951265/The-Hunger-Games:-Mockingjay---Part-1", true],
+    ["https://find-a-movie.com/movie/3531824/Nerve", true],
+    ["https://find-a-movie.com/movie/0434409/V-for-Vendetta", true],
+    ["https://find-a-movie.com/how-it-works", false],
+    ["https://find-a-movie.com/add-a-movie", false],
+    ["https://find-a-movie.com/find", false],
+    ["https://find-a-movie.com/register", false],
+    ["https://find-a-movie.com/contact", false],
+    ["https://find-a-movie.com/that-moves-you", false],
+    ["https://find-a-movie.com/that-makes-you-laugh", false],
+    ["https://find-a-movie.com/all-movies", false],
+    ["https://find-a-movie.com/that-inspires-you", false],
+    ["https://find-a-movie.com/that-surprises-you", false]
+]

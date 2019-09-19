@@ -1,0 +1,22 @@
+[
+    ["https://www.tvguide.com/movies/friday-the-13th/294736/", true],
+    ["https://www.tvguide.com/movies/twilight/295116/", true],
+    ["https://www.tvguide.com/movies/the-hobbit-the-battle-of-the-five-armies/742689/", true],
+    ["https://www.tvguide.com/movies/jurassic-world/817773/", true],
+    ["https://www.tvguide.com/movies/sherlock-holmes/298127/", true],
+    ["https://www.tvguide.com/movies/atomic-blonde/1094705/", true],
+    ["https://www.tvguide.com/movies/murder-on-the-orient-express/126786/", true],
+    ["https://www.tvguide.com/movies/bee-movie/291102/", true],
+    ["https://www.tvguide.com/movies/the-fault-in-our-stars/660607/", true],
+    ["https://www.tvguide.com/movies/lol/282694/", true],
+    ["https://www.tvguide.com/pages/staff/", false],
+    ["https://www.tvguide.com/rss/", false],
+    ["https://www.tvguide.com/mobile/", false],
+    ["https://www.tvguide.com/user/register/", false],
+    ["https://www.tvguide.com/news/", false],
+    ["https://www.tvguide.com/listings/", false],
+    ["https://www.tvguide.com/watchlist/about/", false]
+    ["https://www.tvguide.com/watch-this-now/", false],
+    ["https://www.tvguide.com/news/emmy-nominations-2019/", false],
+    ["https://www.tvguide.com/news/emmys-2019-complete-coverage/", false],
+]
