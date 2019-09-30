@@ -1,9 +1,7 @@
 #!/usr/bin/python3
-import json
 import requests
-
 from bs4 import BeautifulSoup
-from time import sleep
+
 
 url = 'https://flixboss.com/movie/a-i-artificial-intelligence-60020748'
 r = requests.get(url)

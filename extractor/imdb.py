@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-import json
-import requests
 import urllib.request
 
+import requests
 from bs4 import BeautifulSoup
-from time import sleep
+
 
 url = 'https://www.imdb.com/title/tt0816692'
 # https://stackoverflow.com/questions/20338452/saving-files-downloaded-from-urlretrieve-to-another-folder-other

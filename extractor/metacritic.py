@@ -1,9 +1,7 @@
 #!/usr/bin/python3
-import json
 import requests
-
 from bs4 import BeautifulSoup
-from time import sleep
+
 
 url = 'https://www.metacritic.com/movie/iron-man'
 r = requests.get(url)
