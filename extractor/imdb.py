@@ -1,11 +1,14 @@
 #!/usr/bin/python3
 import json
 import requests
+import urllib.request
 
 from bs4 import BeautifulSoup
 from time import sleep
 
 url = 'https://www.imdb.com/title/tt0816692'
+# https://stackoverflow.com/questions/20338452/saving-files-downloaded-from-urlretrieve-to-another-folder-other
+# urllib.request.urlretrieve(url, 'imdb_test.txt')
 r = requests.get(url)
 print(f'Status code: {r.status_code}\n')
 soup = BeautifulSoup(r.text, 'html.parser')
