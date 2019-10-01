@@ -14,3 +14,5 @@ A IR system to search movies data.
   $ pip install -r requirements.txt
   ```
   
+## Team
+* [@pamella](https://github.com/pamella)
