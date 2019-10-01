@@ -26,11 +26,13 @@ def save_website_html_pages_as_json(website_name, website_links):
     data = []
     for link in website_links:
         html_text = get_html_text_or_none(link[0])
-        data.append(html_text)
+        data.append([html_text, link[1]])
 
     with open(f'classifier/html_docs/{website_name}_html_docs.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
         f.close()
+
+    print(f'Saved {website_name.upper()} html pages as json.')
 
 def main():
     save_website_html_pages_as_json('imdb', imdb_links)
