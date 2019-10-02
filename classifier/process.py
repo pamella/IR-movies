@@ -11,7 +11,7 @@ def get_website_html_pages_tokens(website_name):
 
     for html_doc in html_docs_list:
         if html_doc[0] and '<!DOCTYPE' in html_doc[0]:
-            X_TRAIN.append(lexer.preprocess(html_doc[0]))
+            X_TRAIN.append(lexer.tokenize(html_doc[0]))
             Y_TRAIN.append(html_doc[1])
 
 def save_tokes_to_train_sets():
