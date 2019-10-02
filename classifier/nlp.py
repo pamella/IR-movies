@@ -32,22 +32,20 @@ def get_words_frequency(all_htmls_tokens):
                 words_freq[token] += 1
     return words_freq
 
+# Most freq tokens
 def get_most_freq_tokens(words_freq, size):
     most_freq = heapq.nlargest(size, words_freq, key=words_freq.get)
     return most_freq
 
-def vectorize(html, most_freq_tokens):
-    tokens = vectorize(html)
-    html_vec = []
-    for token in most_freq:
-        if token in sentence_tokens:
-            html_vec.append(1)
-        else:
-            html_vec.append(0)
-    return html_vec
-
-def vectorize_all(all_htmls, most_freq_tokens):
-    all_html_vec = []
-    for html in all_htmls:
-        all_html_vec.append(vectorize(html))
-    return vectorize_all
+# Vectorize all html tokens
+def vectorize(all_htmls_tokens, most_freq_tokens):
+    all_htmls_vec = []
+    for html_tokens in all_htmls_tokens:
+        html_vec = []
+        for token in most_freq_tokens:
+            if token in html_tokens:
+                html_vec.append(1)
+            else:
+                html_vec.append(0)
+        all_htmls_vec.append(html_vec)
+    return all_htmls_vec
