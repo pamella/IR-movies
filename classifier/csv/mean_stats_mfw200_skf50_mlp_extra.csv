@@ -1,0 +1,5 @@
+,MLP
+accuracies,0.92
+precisions,0.8833
+recalls,0.94
+train_times,2.824

@@ -1,0 +1,5 @@
+,SVM
+accuracies,0.9
+precisions,0.8286
+recalls,0.8571
+train_times,0.0118

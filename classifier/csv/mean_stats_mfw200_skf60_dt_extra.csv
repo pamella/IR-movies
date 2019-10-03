@@ -1,0 +1,5 @@
+,DECISION TREE
+accuracies,0.9125
+precisions,0.8611
+recalls,0.9
+train_times,0.009

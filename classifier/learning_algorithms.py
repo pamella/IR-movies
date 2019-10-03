@@ -5,11 +5,11 @@ import pandas as pd
 import numpy as np
 
 from sklearn.model_selection import StratifiedKFold
-from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
-from sklearn.neural_network import MLPClassifier
-from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
+from sklearn.linear_model import LogisticRegression
+from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import precision_score, recall_score
 
 
@@ -37,9 +37,13 @@ X_train = X_train_vec_200
 def stats(skf, X_train, Y_train):
     nb = GaussianNB()
     dt = DecisionTreeClassifier()
-    svm = SVC()
-    lr = LogisticRegression()
-    mlp = MLPClassifier()
+    # dt = DecisionTreeClassifier()
+    svm = SVC(kernel="linear", C=0.5, gamma=2)
+    # svm = SVC()
+    lr = LogisticRegression(random_state=0, solver='lbfgs', multi_class='multinomial')
+    # lr = LogisticRegression()
+    mlp = MLPClassifier(alpha=1)
+    # mlp = MLPClassifier()
     classifiers = [nb, dt, svm, lr, mlp]
     accuracies = []
     precisions = []
@@ -103,28 +107,10 @@ metrics = ['accuracies', 'precisions', 'recalls', 'train_times']
 # Provides train/test indices to split data in train/test sets.
 # The folds are made by preserving the percentage of samples for each class.
 
-# # 1
-# skf = StratifiedKFold(n_splits = 10)
-# stats1 = stats(skf, X_train, Y_train)
-
-# print(f'-- STATS USING SKF = 10 --\n')
-# # print_full_stats(classifiers, metrics, stats1)
-# print_mean_stats(classifiers, metrics, stats1)
-
-# # 2
-# skf2 = StratifiedKFold(n_splits = 20)
-# stats2 = stats(skf2, X_train, Y_train)
-
-# print(f'-- STATS USING SKF = 20 --\n')
-# print_mean_stats(classifiers, metrics, stats2)
-
-# 3
-skf3 = StratifiedKFold(n_splits = 50)
-stats3 = stats(skf3, X_train, Y_train)
-
-print(f'-- STATS USING SKF = 50 --\n')
-mean_stats_3 = print_mean_stats(classifiers, metrics, stats3)
+skf = StratifiedKFold(n_splits = 60)
+stats = stats(skf, X_train, Y_train)
+mean_stats = print_mean_stats(classifiers, metrics, stats)
 
 # Saving csv
-with open(f'classifier/csv/mean_stats_mfw{200}_skf{50}.csv', 'w') as f:
-    mean_stats_3.round(6).to_csv(f, index=True)
+with open(f'classifier/csv/mean_stats_mfw{200}_skf{60}_optimized.csv', 'w') as f:
+    mean_stats.round(4).to_csv(f, index=True)
