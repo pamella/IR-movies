@@ -4,14 +4,13 @@ import time
 import pandas as pd
 import numpy as np
 
-from sklearn.feature_selection import mutual_info_classif
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import precision_score, recall_score
 from sklearn.model_selection import StratifiedKFold
+from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import precision_score, recall_score
 
 
 with open('classifier/train_sets/X_train.json') as f:
