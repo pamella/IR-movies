@@ -24,12 +24,16 @@ words_freq = nlp.get_words_frequency(X_train)
 with open('classifier/vocab/words_freq.json', 'w') as f:
     json.dump(words_freq, f)
 
-most_freq_tokens = nlp.get_most_freq_tokens(words_freq, 200)
+most_freq_tokens_200 = nlp.get_most_freq_tokens(words_freq, 200)
 with open(f'classifier/vocab/most_freq_tokens_{200}.json', 'w') as f:
-    json.dump(most_freq_tokens, f)
+    json.dump(most_freq_tokens_200, f)
 
-X_train_vec = nlp.vectorize(X_train, most_freq_tokens)
-X_train = X_train_vec
+X_train_vec_200 = nlp.vectorize(X_train, most_freq_tokens_200)
+X_train = X_train_vec_200
+
+# most_freq_tokens_150 = nlp.get_most_freq_tokens(words_freq, 150)
+# X_train_vec_150 = nlp.vectorize(X_train, most_freq_tokens_150)
+# X_train = X_train_vec_150
 
 def stats(skf, X_train, Y_train):
     nb = GaussianNB()
@@ -100,28 +104,28 @@ metrics = ['accuracies', 'precisions', 'recalls', 'train_times']
 # Provides train/test indices to split data in train/test sets.
 # The folds are made by preserving the percentage of samples for each class.
 
-# 1
-skf = StratifiedKFold(n_splits = 10)
-stats1 = stats(skf, X_train_vec, Y_train)
+# # 1
+# skf = StratifiedKFold(n_splits = 10)
+# stats1 = stats(skf, X_train, Y_train)
 
-print(f'-- STATS USING SKF = 10 --\n')
-# print_full_stats(classifiers, metrics, stats1)
-print_mean_stats(classifiers, metrics, stats1)
+# print(f'-- STATS USING SKF = 10 --\n')
+# # print_full_stats(classifiers, metrics, stats1)
+# print_mean_stats(classifiers, metrics, stats1)
 
-# 2
-skf2 = StratifiedKFold(n_splits = 20)
-stats2 = stats(skf2, X_train_vec, Y_train)
+# # 2
+# skf2 = StratifiedKFold(n_splits = 20)
+# stats2 = stats(skf2, X_train, Y_train)
 
-print(f'-- STATS USING SKF = 20 --\n')
-print_mean_stats(classifiers, metrics, stats2)
+# print(f'-- STATS USING SKF = 20 --\n')
+# print_mean_stats(classifiers, metrics, stats2)
 
 # 3
 skf3 = StratifiedKFold(n_splits = 50)
-stats3 = stats(skf3, X_train_vec, Y_train)
+stats3 = stats(skf3, X_train, Y_train)
 
 print(f'-- STATS USING SKF = 50 --\n')
 mean_stats_3 = print_mean_stats(classifiers, metrics, stats3)
 
 # Saving csv
-with open(f'classifier/csv/mean_stats_{50}.csv', 'w') as f:
-    mean_stats_3.to_csv(f, sep=';', index=False)
+with open(f'classifier/csv/mean_stats_mfw{200}_skf{50}.csv', 'w') as f:
+    mean_stats_3.round(6).to_csv(f, index=True)
