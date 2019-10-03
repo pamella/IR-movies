@@ -13,6 +13,9 @@ A IR system to search movies data.
   $ (linux) source env/bin/activate  *OR*  (win) env\Scripts\activate
   $ pip install -r requirements.txt
   ```
-  
+
+## Presentations
+* [Project - Part 1](https://docs.google.com/presentation/d/1Tyc1yZYpJnpL1huzO-eQvafPmQr3iS_4jzrw8DSDu4U/edit?usp=sharing)
+
 ## Team
 * [@pamella](https://github.com/pamella)
