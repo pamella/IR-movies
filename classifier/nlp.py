@@ -1,6 +1,11 @@
 import heapq
 import re
 
+from nltk.stem.porter import PorterStemmer
+from nltk.stem.snowball import SnowballStemmer
+from nltk.stem.wordnet import WordNetLemmatizer
+from stop_words import get_stop_words
+
 
 # Tokenization to all sentences (html docs)
 def tokenize(html):
@@ -11,6 +16,24 @@ def tokenize(html):
     html = html.split()
     words = sorted(list(set(html)))
     return words
+
+# Stemize
+# ex.: stemmer = PorterStemmer || stemmer = SnowballStemmer('english')
+def stemize(stemmer, data):
+    data_stemize = []
+    for d in data:
+        ste = stemmer.stem(d)
+        if ste not in data_stemize:
+            data_stemize.append(ste)
+    return data_stemize
+
+# Stop-words
+def remove_stop_words(data):
+    stop_words = get_stop_words('english')
+    for sw in stop_words:
+        if sw in data:
+            data.remove(sw)
+    return data
 
 # Build vocabulary and generate vectors
 def generate_vocab(all_htmls_tokens):
