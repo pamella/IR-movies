@@ -21,12 +21,15 @@ with open('classifier/train_sets/Y_train.json') as f:
     Y_train = json.load(f)
 
 words_freq = nlp.get_words_frequency(X_train)
+with open('classifier/vocab/words_freq.json', 'w') as f:
+    json.dump(words_freq, f)
+
 most_freq_tokens = nlp.get_most_freq_tokens(words_freq, 200)
+with open(f'classifier/vocab/most_freq_tokens_{200}.json', 'w') as f:
+    json.dump(most_freq_tokens, f)
 
 X_train_vec = nlp.vectorize(X_train, most_freq_tokens)
 X_train = X_train_vec
-
-skf = StratifiedKFold(n_splits = 10)
 
 def stats(skf, X_train, Y_train):
     nb = GaussianNB()
@@ -84,16 +87,41 @@ def print_mean_stats(classifiers, metrics, stats):
     for metric in metrics:
         mean = np.mean(pd.DataFrame(stats[metric], columns=classifiers))
         metrics_mean.append(mean)
-    frame = pd.DataFrame(metrics_mean)
-    frame.index = metrics
-    print(f'-- STATS MEAN --\n{frame}')
+    df_metrics_mean = pd.DataFrame(metrics_mean, index=metrics)
+    print(f'-- STATS MEAN --\n{df_metrics_mean}')
+    return df_metrics_mean
 
 
 # Testing 
 classifiers = ['naive bayes', 'decision tree', 'svm', 'logistic regression', 'mlp']
 metrics = ['accuracies', 'precisions', 'recalls', 'train_times']
 
+# Stratified K-Folds cross-validator
+# Provides train/test indices to split data in train/test sets.
+# The folds are made by preserving the percentage of samples for each class.
+
+# 1
+skf = StratifiedKFold(n_splits = 10)
 stats1 = stats(skf, X_train_vec, Y_train)
 
-print_full_stats(classifiers, metrics, stats1)
+print(f'-- STATS USING SKF = 10 --\n')
+# print_full_stats(classifiers, metrics, stats1)
 print_mean_stats(classifiers, metrics, stats1)
+
+# 2
+skf2 = StratifiedKFold(n_splits = 20)
+stats2 = stats(skf2, X_train_vec, Y_train)
+
+print(f'-- STATS USING SKF = 20 --\n')
+print_mean_stats(classifiers, metrics, stats2)
+
+# 3
+skf3 = StratifiedKFold(n_splits = 50)
+stats3 = stats(skf3, X_train_vec, Y_train)
+
+print(f'-- STATS USING SKF = 50 --\n')
+mean_stats_3 = print_mean_stats(classifiers, metrics, stats3)
+
+# Saving csv
+with open(f'classifier/csv/mean_stats_{50}.csv', 'w') as f:
+    mean_stats_3.to_csv(f, sep=';', index=False)
