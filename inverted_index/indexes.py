@@ -22,15 +22,16 @@ for movie in MOVIES:
     movie_title_words = movie.title.split(' ')
     for movie_title_word in movie_title_words:
         if movie_title_word not in INVERTED_INDEX_UNCOMPRESSED['title'].keys():
-            INVERTED_INDEX_UNCOMPRESSED['title'][movie_title_word] = []
+            INVERTED_INDEX_UNCOMPRESSED['title'][movie_title_word] = {}
             INVERTED_INDEX_COMPRESSED['title'][movie_title_word] = []
 
 for doc_id, doc_tokens in enumerate(docs_tokens):
     for token in doc_tokens:
-        freq = 0
         if token in INVERTED_INDEX_UNCOMPRESSED['title']:
-            freq = freq + 1
-            INVERTED_INDEX_UNCOMPRESSED['title'][token].append([doc_id, freq])
+            if str(doc_id) not in INVERTED_INDEX_UNCOMPRESSED['title'][token].keys():
+                INVERTED_INDEX_UNCOMPRESSED['title'][token][str(doc_id)] = 1
+            else:
+                INVERTED_INDEX_UNCOMPRESSED['title'][token][str(doc_id)] += 1
 
 # print(INVERTED_INDEX_UNCOMPRESSED)
 print (f"Size of INVERTED_INDEX_UNCOMPRESSED object in bytes: {utils.get_size(INVERTED_INDEX_UNCOMPRESSED)}")
@@ -38,11 +39,18 @@ print (f"Size of INVERTED_INDEX_UNCOMPRESSED object in bytes: {utils.get_size(IN
 for doc_id, doc_tokens in enumerate(docs_tokens):
     for token in doc_tokens:
         if token in INVERTED_INDEX_COMPRESSED['title']:
-            if len(INVERTED_INDEX_COMPRESSED['title'][token]) == 0:
-                INVERTED_INDEX_COMPRESSED['title'][token].append(doc_id)
+            if not INVERTED_INDEX_COMPRESSED['title'][token]:
+                INVERTED_INDEX_COMPRESSED['title'][token].append([doc_id])
+                INVERTED_INDEX_COMPRESSED['title'][token].append([1])
             else:
-                first_doc = INVERTED_INDEX_COMPRESSED['title'][token][0]
-                INVERTED_INDEX_COMPRESSED['title'][token].append(doc_id - first_doc)
+                aux = len(INVERTED_INDEX_COMPRESSED['title'][token][0])
+                first_doc = INVERTED_INDEX_COMPRESSED['title'][token][0][0]
+                diff_interval = doc_id - first_doc
+                if diff_interval == 0 or diff_interval == INVERTED_INDEX_COMPRESSED['title'][token][0][aux-1]:
+                    INVERTED_INDEX_COMPRESSED['title'][token][1][aux-1] += 1
+                else:
+                    INVERTED_INDEX_COMPRESSED['title'][token][0].append(diff_interval)
+                    INVERTED_INDEX_COMPRESSED['title'][token][1].append(1)
 
 # print(INVERTED_INDEX_COMPRESSED)
 print (f"Size of INVERTED_INDEX_COMPRESSED object in bytes: {utils.get_size(INVERTED_INDEX_COMPRESSED)}")
