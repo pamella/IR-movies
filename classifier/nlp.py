@@ -8,9 +8,9 @@ from stop_words import get_stop_words
 
 # Tokenization to all sentences (html docs)
 def tokenize(html):
-    # regex = r'[\\\n\t\"\'\,\.\!\(\)\*\+\-\/\:\;\<\=\>\|\&\@\%\?\[\]\^\_\`\{\|\}\~]'
+    regex = r'[\\\n\t\"\'\,\.\!\(\)\*\+\-\/\:\;\<\=\>\|\&\@\%\?\[\]\^\_\`\{\|\}\~]'
     # regex = "[^\w]"
-    regex = "[^a-z]" # only letters, no numbers
+    # regex = "[^a-z]" # only letters, no numbers
     html = re.sub(regex, ' ', html).lower()
     html = html.split()
     words = sorted(list(set(html)))
