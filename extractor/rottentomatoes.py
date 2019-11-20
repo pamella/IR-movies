@@ -3,9 +3,9 @@ import requests
 from bs4 import BeautifulSoup
 
 
-url = 'https://www.rottentomatoes.com/m/breakfast_club'
+url = 'https://www.rottentomatoes.com/m/the_perks_of_being_a_wallflower'
 r = requests.get(url)
-print(f'Status code: {r.status_code}\n')
+# print(f'Status code: {r.status_code}\n')
 soup = BeautifulSoup(r.text, 'html.parser')
 # print(soup.prettify())
 
@@ -28,10 +28,10 @@ director = meta_values[2].text
 director = ' '.join(director.split())
 print(f'Director: {director}\n')
 
-runtime = meta_values[6].text
+runtime = meta_values[len(meta_values)-2].text
 runtime = ' '.join(runtime.split())
 print(f'Runtime: {runtime}\n')
 
-studio = meta_values[7].text
+studio = meta_values[len(meta_values)-1].text
 studio = ' '.join(studio.split())
 print(f'Studio: {studio}\n')
