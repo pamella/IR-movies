@@ -34,7 +34,7 @@ def get_websites_list(html_docs, ids_list):
             links.append(html_docs.get(id)[1])
     return links
 
-
+import ipdb ; ipdb.set_trace()
 
 # result_docs = search('title', 'breakfast club')
 search_field = input('Digite o field que deseja buscar (title, year, genre)\n')
