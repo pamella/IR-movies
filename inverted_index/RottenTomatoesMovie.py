@@ -19,7 +19,6 @@ class RottenTomatoesMovie:
             self.year = year
         genres = meta_values[1].text.lower()
         genres = ' '.join(genres.split())
-        # import ipdb ; ipdb.set_trace()
         genres = [genre.strip() for genre in genres.split(',')]
         self.genres = []
         for genre in genres:
@@ -32,17 +31,27 @@ class RottenTomatoesMovie:
 
 
 rottentomatoes_movies_links = [
-    "https://www.rottentomatoes.com/m/the_perks_of_being_a_wallflower",
-    "https://www.rottentomatoes.com/m/breakfast_club",
-    "https://www.rottentomatoes.com/m/harry_potter_and_the_sorcerers_stone",
-    "https://www.rottentomatoes.com/m/harry_potter_and_the_chamber_of_secrets",
+    # "https://www.rottentomatoes.com/m/the_perks_of_being_a_wallflower",
+    # "https://www.rottentomatoes.com/m/breakfast_club",
+    # "https://www.rottentomatoes.com/m/harry_potter_and_the_sorcerers_stone",
+    # "https://www.rottentomatoes.com/m/harry_potter_and_the_chamber_of_secrets",
+    # "https://www.rottentomatoes.com/m/1221547_alice_in_wonderland",
+    # "https://www.rottentomatoes.com/m/iron_man",
+    # "https://www.rottentomatoes.com/m/the_imitation_game",
+    # "https://www.rottentomatoes.com/m/the_girl_with_the_dragon_tattoo_2009",
+    # "https://www.rottentomatoes.com/m/avatar",
+    # "https://www.rottentomatoes.com/m/shining",
+    # "https://www.rottentomatoes.com/m/the_devil_wears_prada",
+    "https://www.rottentomatoes.com/m/hustlers_2019",
     "https://www.rottentomatoes.com/m/1221547_alice_in_wonderland",
-    "https://www.rottentomatoes.com/m/iron_man",
-    "https://www.rottentomatoes.com/m/the_imitation_game",
+    "https://www.rottentomatoes.com/m/spider_man_far_from_home",
+    "https://www.rottentomatoes.com/m/singin_in_the_rain",
+    "https://www.rottentomatoes.com/m/1073037_hunchback_of_notre_dame",
+    "https://www.rottentomatoes.com/m/aquarius",
     "https://www.rottentomatoes.com/m/the_girl_with_the_dragon_tattoo_2009",
-    "https://www.rottentomatoes.com/m/avatar",
-    "https://www.rottentomatoes.com/m/shining",
-    "https://www.rottentomatoes.com/m/the_devil_wears_prada",
+    "https://www.rottentomatoes.com/m/breakfast_club",
+    "https://www.rottentomatoes.com/m/the_imitation_game",
+    "https://www.rottentomatoes.com/m/barbie_as_the_princess_and_the_pauper",
 ]
 
 ROTTENTOMATOES_MOVIES = []

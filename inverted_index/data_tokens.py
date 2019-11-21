@@ -6,7 +6,7 @@ import json
 
 
 def get_website_html_pages_tokens(website_names, filter_type):
-    result = []
+    result = {}
     html_doc_id = 0
 
     for website_name in website_names:
@@ -16,9 +16,9 @@ def get_website_html_pages_tokens(website_names, filter_type):
 
         for html_doc in html_docs_list:
             if filter_type == 'true' and html_doc[0] and '<!DOCTYPE' in html_doc[0] and (html_doc[1] == True):
-                    result.append([html_doc_id, html_doc[2], html_doc[3], nlp.tokenize(html_doc[0])])
+                    result[html_doc_id] = [html_doc[2], html_doc[3], nlp.tokenize(html_doc[0])]
             elif filter_type == 'all' and html_doc[0] and '<!DOCTYPE' in html_doc[0]:
-                    result.append([html_doc_id, html_doc[2], html_doc[3], nlp.tokenize(html_doc[0])])
+                    result[html_doc_id] = [html_doc[2], html_doc[3], nlp.tokenize(html_doc[0])]
             html_doc_id = html_doc_id + 1
         print(f'Get {website_name.upper()} tokens.')
     return result

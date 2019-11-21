@@ -32,9 +32,9 @@ def generate_inverted_index():
                 INVERTED_INDEX_COMPRESSED['genre'][genre] = []
 
     # UNCOMPRESSED
-    for doc_tokens in docs_tokens:
+    for doc_tokens in docs_tokens.items():
         doc_id = doc_tokens[0]
-        for token in doc_tokens[3]:
+        for token in doc_tokens[1][2]:
             for key in INVERTED_INDEX_UNCOMPRESSED.keys():
                 if token in INVERTED_INDEX_UNCOMPRESSED[key]:
                     if str(doc_id) not in INVERTED_INDEX_UNCOMPRESSED[key][token].keys():
@@ -44,9 +44,9 @@ def generate_inverted_index():
     print("Processed inverted index uncompressed.")
 
     # COMPRESSED
-    for doc_tokens in docs_tokens:
+    for doc_tokens in docs_tokens.items():
         doc_id = doc_tokens[0]
-        for token in doc_tokens[3]:
+        for token in doc_tokens[1][2]:
             for key in INVERTED_INDEX_UNCOMPRESSED.keys():
                 if token in INVERTED_INDEX_COMPRESSED[key]:
                     if not INVERTED_INDEX_COMPRESSED[key][token]:
@@ -55,7 +55,7 @@ def generate_inverted_index():
                     else:
                         aux = len(INVERTED_INDEX_COMPRESSED[key][token][0])
                         first_doc = INVERTED_INDEX_COMPRESSED[key][token][0][0]
-                        diff_interval = doc_id - first_doc
+                        diff_interval = int(doc_id) - int(first_doc)
                         if diff_interval == 0 or diff_interval == INVERTED_INDEX_COMPRESSED[key][token][0][aux-1]:
                             INVERTED_INDEX_COMPRESSED[key][token][1][aux-1] += 1
                         else:
