@@ -12,7 +12,11 @@ class MovieListView(generic.ListView):
         select = self.request.GET.get("select")
         search = self.request.GET.get("search")
         if search and select:
-            object_list = self.get_queryset().filter(**{f"{select}__iexact": search})
+            if select == 'genres':
+                genre = Genre.objects.get(name=search)
+                object_list = self.get_queryset().filter(genres__in=[genre])
+            else:
+                object_list = self.get_queryset().filter(**{f"{select}__icontains": search})
             context = super().get_context_data(**kwargs, object_list=object_list)
             context["search_term"] = search
             return context

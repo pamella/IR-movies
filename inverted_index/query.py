@@ -6,6 +6,9 @@ with open('inverted_index/data/INVERTED_INDEX_UNCOMPRESSED.json') as f:
     f.close()
 
 def search(field, value):
+    """
+        Allowed fields: title, year, genre
+    """
     value_words = value.split(' ')
     result_docs_id = {}
     for word in value_words:

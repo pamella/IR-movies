@@ -5,21 +5,45 @@
 {% block body %}
 <section class="movie-list-section">
     <div class="movie-list-container">
+        <h2>Search</h2>
+        <form action="" method="get">
+            <select name="select" id="searchOption">
+                <option value="0" disabled selected hidden>Select...</option>
+                <option value="title">Title</option>
+                <option value="genres">Genre</option>
+                <option value="year">Year</option>
+            </select>
+            <input type="text" name="search" placeholder="Enter the value here...">
+            <button type="submit">Search</button>
+            <a href="/">Clear searh</a>
+        </form>
+
+        <hr>
+
         <h2>List of Movies</h2>
         <h3>Total: {{ movies.all.count }}</h3>
 
         {% for movie in movies %}
             <div class="movie-card">
                 <ul>
-                    <li>Title: {{ movie.title }}</li>
-                    <li>URL: <a href="{{ movie.url }}" target="__blank">{{ movie.url }}</a></li>
-                    <li>Year: {{ movie.year }}</li>
-                    <li>Genres:
+                    <li>
+                        <b>Title: </b>{{ movie.title | title}}
+                    </li>
+                    <li>
+                        <b>URL: </b><a href="{{ movie.url }}" target="__blank">{{ movie.url }}</a>
+                    </li>
+                    <li>
+                        <b>Year: </b>{{ movie.year }}
+                    </li>
+                    <li>
+                        <b>Genres: </b>
                         {% for genre in movie.genres.all %}
-                            {{ genre }},
+                            {{ genre | title }},
                         {% endfor %}
                     </li>
-                    <li>Runtime: {{ movie.runtime }}</li>
+                    <li>
+                        <b>Runtime: </b>{{ movie.runtime }} min
+                    </li>
                 </ul>
             </div>
             <hr>
