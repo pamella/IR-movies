@@ -64,13 +64,13 @@
                             <b>URL: </b><a href="{{ movie.url }}" target="__blank">{{ movie.url }}</a>
                         </li>
                         <li>
-                            <b>Year: </b>{{ movie.year }}
-                        </li>
-                        <li>
                             <b>Genres: </b>
                             {% for genre in movie.genres.all %}
                                 {{ genre | title }},
                             {% endfor %}
+                        </li>
+                        <li>
+                            <b>Year: </b>{{ movie.year }}
                         </li>
                         <li>
                             <b>Runtime: </b>{{ movie.runtime }} min
