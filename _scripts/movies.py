@@ -7,12 +7,12 @@ def create_movies():
     for link in rottentomatoes_links:
         if link[1] == True:
             movie = rottentomatoes_extractor(link[0])
-            movieObj = Movie.objects.create(
+            movie_obj, movie_created = Movie.objects.get_or_create(
                 title=movie['title'],
                 url=movie['url'],
                 runtime=movie['runtime'],
                 year=movie['year'],
             )
             for genre in movie['genres']:
-                genreObj = Genre.objects.get(name=genre)
-                movieObj.genres.add(genreObj)
+                genre_obj, genre_created = Genre.objects.get_or_create(name=genre)
+                movie_obj.genres.add(genre_obj)

@@ -147,6 +147,15 @@ rottentomatoes_links = [
     ["https://www.rottentomatoes.com/m/breakfast_club", True],
     ["https://www.rottentomatoes.com/m/the_imitation_game", True],
     ["https://www.rottentomatoes.com/m/barbie_as_the_princess_and_the_pauper", True],
+
+    ["https://www.rottentomatoes.com/m/the_perks_of_being_a_wallflower", True],
+    ["https://www.rottentomatoes.com/m/harry_potter_and_the_sorcerers_stone", True],
+    ["https://www.rottentomatoes.com/m/harry_potter_and_the_chamber_of_secrets", True],
+    ["https://www.rottentomatoes.com/m/iron_man", True],
+    ["https://www.rottentomatoes.com/m/avatar", True],
+    ["https://www.rottentomatoes.com/m/shining", True],
+    ["https://www.rottentomatoes.com/m/the_devil_wears_prada", True],
+
     ["https://www.rottentomatoes.com/about#whatisthetomatometer", False],
     ["https://www.rottentomatoes.com/faq", False],
     ["https://www.rottentomatoes.com/critics", False],
