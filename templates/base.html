@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}Information Retrieval | Movies System</title>
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower&display=swap" rel="stylesheet">
+
+    <!-- css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block style %}{% endblock %}
+</head>
+<body>
+
+    <!-- Includes -->
+
+    {% block body %}{% endblock %}
+
+    {% block scripts %}{% endblock %}
+
+</body>
+</html>
