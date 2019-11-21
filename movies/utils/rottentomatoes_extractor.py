@@ -18,10 +18,13 @@ def rottentomatoes_extractor(url):
     runtime = runtime.split(' ')
     movie['runtime'] = runtime[0].strip()
 
-    year = meta_values[len(meta_values)-3].text
+    year = meta_values[4].text
     year = ' '.join(year.split())
-    year = year.split(',')
-    movie['year'] = year[len(year) -1].strip()
+    year = year.split(' ')
+    if len(year) >= 4 :
+        movie['year'] = year[len(year) - 2].strip()
+    else:
+        movie['year'] = year[len(year) - 1].strip()
 
     genres = meta_values[1].text.lower()
     genres = ' '.join(genres.split())
