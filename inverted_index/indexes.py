@@ -1,13 +1,14 @@
 import json
 
-import data
+import RottenTomatoesMovie
 import utils
 
 
-with open('classifier/train_sets/X_train.json') as f:
+with open('inverted_index/data/html_docs_tokens_all.json') as f:
     docs_tokens = json.load(f)
+    f.close()
 
-MOVIES = data.ROTTENTOMATOES_MOVIES
+MOVIES = RottenTomatoesMovie.ROTTENTOMATOES_MOVIES
 
 INVERTED_INDEX_UNCOMPRESSED = {'title': {}, 'year': {}, 'genre': {}}
 INVERTED_INDEX_COMPRESSED = {'title': {}, 'year': {}, 'genre': {}}
@@ -31,18 +32,21 @@ def generate_inverted_index():
                 INVERTED_INDEX_COMPRESSED['genre'][genre] = []
 
     # UNCOMPRESSED
-    for doc_id, doc_tokens in enumerate(docs_tokens):
-        for token in doc_tokens:
+    for doc_tokens in docs_tokens:
+        doc_id = doc_tokens[0]
+        for token in doc_tokens[3]:
             for key in INVERTED_INDEX_UNCOMPRESSED.keys():
                 if token in INVERTED_INDEX_UNCOMPRESSED[key]:
                     if str(doc_id) not in INVERTED_INDEX_UNCOMPRESSED[key][token].keys():
                         INVERTED_INDEX_UNCOMPRESSED[key][token][str(doc_id)] = 1
                     else:
                         INVERTED_INDEX_UNCOMPRESSED[key][token][str(doc_id)] += 1
+    print("Processed inverted index uncompressed.")
 
     # COMPRESSED
-    for doc_id, doc_tokens in enumerate(docs_tokens):
-        for token in doc_tokens:
+    for doc_tokens in docs_tokens:
+        doc_id = doc_tokens[0]
+        for token in doc_tokens[3]:
             for key in INVERTED_INDEX_UNCOMPRESSED.keys():
                 if token in INVERTED_INDEX_COMPRESSED[key]:
                     if not INVERTED_INDEX_COMPRESSED[key][token]:
@@ -57,13 +61,16 @@ def generate_inverted_index():
                         else:
                             INVERTED_INDEX_COMPRESSED[key][token][0].append(diff_interval)
                             INVERTED_INDEX_COMPRESSED[key][token][1].append(1)
+    print("Processed inverted index compressed.")
 
 def save_inverted_indexes():
     with open('inverted_index/data/INVERTED_INDEX_UNCOMPRESSED.json', 'w') as f:
         json.dump(INVERTED_INDEX_UNCOMPRESSED, f)
+        f.close()
 
     with open('inverted_index/data/INVERTED_INDEX_COMPRESSED.json', 'w') as f:
         json.dump(INVERTED_INDEX_COMPRESSED, f)
+        f.close()
 
 generate_inverted_index()
 # print(INVERTED_INDEX_UNCOMPRESSED)
