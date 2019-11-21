@@ -14,40 +14,72 @@
                 <option value="year">Year</option>
             </select>
             <input type="text" name="search" placeholder="Enter the value here...">
-            <button type="submit">Search</button>
+            <button type="submit" name="query_type" value="django">Search Django</button>
+            <button type="submit" name="query_type" value="inverted-index">Search Inverted Index</button>
             <a href="/">Clear searh</a>
         </form>
 
         <hr>
 
         <h2>List of Movies</h2>
-        <h3>Total: {{ movies.all.count }}</h3>
 
-        {% for movie in movies %}
-            <div class="movie-card">
+        {% if inverted_index_search %}
+            <!-- Inverted Index: Only positive links -->
+            <div>
+                <h3>Inverted Index: Only positive links</h3>
                 <ul>
+                {% for url in inverted_index_search_true %}
                     <li>
-                        <b>Title: </b>{{ movie.title | title}}
+                        <b>URL: </b> <a href="{{ url }}">{{ url }}</a>
                     </li>
-                    <li>
-                        <b>URL: </b><a href="{{ movie.url }}" target="__blank">{{ movie.url }}</a>
-                    </li>
-                    <li>
-                        <b>Year: </b>{{ movie.year }}
-                    </li>
-                    <li>
-                        <b>Genres: </b>
-                        {% for genre in movie.genres.all %}
-                            {{ genre | title }},
-                        {% endfor %}
-                    </li>
-                    <li>
-                        <b>Runtime: </b>{{ movie.runtime }} min
-                    </li>
+                {% endfor %}
                 </ul>
             </div>
-            <hr>
-        {% endfor %}
+            <!-- Inverted Index: All links (positive and negative) -->
+            <div>
+                <h3>Inverted Index: All links (positive and negative)</h3>
+                <ul>
+                {% for url in inverted_index_search_all %}
+                    <li>
+                        <b>URL: </b> <a href="{{ url }}">{{ url }}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% else %}
+            <h3>
+                Total: {{ movies.all.count }}
+                {% if search_term %}
+                    <small>(Search term: {{ search_term }})</small>
+                {% endif %}
+            </h3>
+
+            {% for movie in movies %}
+                <div class="movie-card">
+                    <ul>
+                        <li>
+                            <b>Title: </b>{{ movie.title | title}}
+                        </li>
+                        <li>
+                            <b>URL: </b><a href="{{ movie.url }}" target="__blank">{{ movie.url }}</a>
+                        </li>
+                        <li>
+                            <b>Year: </b>{{ movie.year }}
+                        </li>
+                        <li>
+                            <b>Genres: </b>
+                            {% for genre in movie.genres.all %}
+                                {{ genre | title }},
+                            {% endfor %}
+                        </li>
+                        <li>
+                            <b>Runtime: </b>{{ movie.runtime }} min
+                        </li>
+                    </ul>
+                </div>
+                <hr>
+            {% endfor %}
+        {% endif %}
     </div>
 </section>
 {% endblock %}
