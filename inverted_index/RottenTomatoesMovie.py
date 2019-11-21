@@ -4,19 +4,28 @@ from bs4 import BeautifulSoup
 
 class RottenTomatoesMovie:
     def __init__(self, url, title='', year='', runtime='', genres=[]):
+        self.url = url
+
         r = requests.get(url)
         soup = BeautifulSoup(r.text, 'html.parser')
         meta_values = soup.find_all('div', {'class': 'meta-value'})
-        self.url = url
+
         title = soup.find('h1').contents[0].lower()
-        self.title = ' '.join(title.split())
+        self.title = ' '.join(title.split()).strip()
+
         runtime = meta_values[len(meta_values)-2].text
-        self.runtime = ' '.join(runtime.split())
-        if soup.find('span', {'class':'year'}):
-            year = soup.find('span', {'class':'year'}).text
-            self.year = ' '.join(year.split())
+        runtime = ' '.join(runtime.split())
+        runtime = runtime.split(' ')
+        self.runtime = runtime[0].strip()
+
+        year = meta_values[4].text
+        year = ' '.join(year.split())
+        year = year.split(' ')
+        if len(year) >= 4 :
+            self.year = year[len(year) - 2].strip()
         else:
-            self.year = year
+            self.year = year[len(year) - 1].strip()
+
         genres = meta_values[1].text.lower()
         genres = ' '.join(genres.split())
         genres = [genre.strip() for genre in genres.split(',')]

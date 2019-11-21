@@ -11,7 +11,9 @@ with open('inverted_index/data/html_docs_tokens_all.json') as f:
 MOVIES = RottenTomatoesMovie.ROTTENTOMATOES_MOVIES
 
 INVERTED_INDEX_UNCOMPRESSED = {'title': {}, 'year': {}, 'genre': {}}
+INVERTED_INDEX_UNCOMPRESSED_NO_FREQ = {'title': {}, 'year': {}, 'genre': {}}
 INVERTED_INDEX_COMPRESSED = {'title': {}, 'year': {}, 'genre': {}}
+INVERTED_INDEX_COMPRESSED_NO_FREQ = {'title': {}, 'year': {}, 'genre': {}}
 
 def generate_inverted_index():
     for movie in MOVIES:
@@ -20,16 +22,22 @@ def generate_inverted_index():
         for movie_title_word in movie_title_words:
             if movie_title_word not in INVERTED_INDEX_UNCOMPRESSED['title'].keys():
                 INVERTED_INDEX_UNCOMPRESSED['title'][movie_title_word] = {}
+                INVERTED_INDEX_UNCOMPRESSED_NO_FREQ['title'][movie_title_word] = {}
                 INVERTED_INDEX_COMPRESSED['title'][movie_title_word] = []
+                INVERTED_INDEX_COMPRESSED_NO_FREQ['title'][movie_title_word] = []
         # YEAR
         if movie.year:
             INVERTED_INDEX_UNCOMPRESSED['year'][movie.year] = {}
+            INVERTED_INDEX_UNCOMPRESSED_NO_FREQ['year'][movie.year] = {}
             INVERTED_INDEX_COMPRESSED['year'][movie.year] = []
+            INVERTED_INDEX_COMPRESSED_NO_FREQ['year'][movie.year] = []
         # GENRES
         for genre in movie.genres:
             if genre not in INVERTED_INDEX_UNCOMPRESSED['genre'].keys():
                 INVERTED_INDEX_UNCOMPRESSED['genre'][genre] = {}
+                INVERTED_INDEX_UNCOMPRESSED_NO_FREQ['genre'][genre] = {}
                 INVERTED_INDEX_COMPRESSED['genre'][genre] = []
+                INVERTED_INDEX_COMPRESSED_NO_FREQ['genre'][genre] = []
 
     # UNCOMPRESSED
     for doc_tokens in docs_tokens.items():

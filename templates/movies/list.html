@@ -7,13 +7,13 @@
     <div class="movie-list-container">
         <h2>Search</h2>
         <form action="" method="get">
-            <select name="select" id="searchOption">
+            <select name="select" id="searchOption" style="width: 200px;">
                 <option value="0" disabled selected hidden>Select...</option>
                 <option value="title">Title</option>
                 <option value="genres">Genre</option>
                 <option value="year">Year</option>
             </select>
-            <input type="text" name="search" placeholder="Enter the value here...">
+            <input type="text" name="search" placeholder="Enter the value here..." style="width: 200px;">
             <button type="submit" name="query_type" value="django">Search Django</button>
             <button type="submit" name="query_type" value="inverted-index">Search Inverted Index</button>
             <a href="/">Clear searh</a>
@@ -25,6 +25,9 @@
 
         {% if inverted_index_search %}
             <!-- Inverted Index: Only positive links -->
+            <h3>{% if search_term %}
+                <small>(Search term: {{ search_term }})</small>
+            {% endif %}</h3>
             <div>
                 <h3>Inverted Index: Only positive links</h3>
                 <ul>
